@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Employeee_Document } from './Employeee_Document';
+import { Employee_Document } from './Employee_Document';
 
 @Entity()
 export class Document_types {
@@ -18,8 +18,8 @@ export class Document_types {
   name: string;
 
   @OneToMany(
-    () => Employeee_Document,
+    () => Employee_Document,
     (employee_document) => employee_document.document_types,
   )
-  employee_documents: Employeee_Document[];
+  employee_documents: Employee_Document[];
 }

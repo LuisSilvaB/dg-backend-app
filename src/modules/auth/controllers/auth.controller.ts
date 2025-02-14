@@ -12,4 +12,8 @@ export class AuthController {
   login() {
     return 'login';
   }
+  @Post('register')
+  register() {
+    return 'register';
+  }
 }

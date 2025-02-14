@@ -3,7 +3,7 @@ import { Document_types } from './Document_types';
 import { Employee } from './Employee';
 
 @Entity()
-export class Employeee_Document {
+export class Employee_Document {
   @PrimaryGeneratedColumn({
     type: 'int',
     name: 'id',

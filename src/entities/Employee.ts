@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './User';
-import { Employeee_Document } from './Employeee_Document';
+import { Employee_Document } from './Employee_Document';
 
 @Entity()
 export class Employee {
@@ -37,8 +37,8 @@ export class Employee {
   user: User;
 
   @OneToMany(
-    () => Employeee_Document,
+    () => Employee_Document,
     (employee_document) => employee_document.employee,
   )
-  employee_documents: Employeee_Document[];
+  employee_documents: Employee_Document[];
 }
