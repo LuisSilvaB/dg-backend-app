@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Role } from '../entities/Role';
+import { Role } from '../entities/Role.entity';
 
 @Injectable()
 export class RoleSeeder {
@@ -11,6 +11,8 @@ export class RoleSeeder {
   ) {}
 
   public async run(): Promise<void> {
+    console.log('Running role seeder...');
+    console.log(this.roleRepository);
     const roles = [
       {
         name: 'RH-01',
@@ -26,8 +28,10 @@ export class RoleSeeder {
       const existingRole = await this.roleRepository.findOneBy({
         name: role.name,
       });
+      console.log(existingRole);
       if (!existingRole) {
         const newRole = this.roleRepository.create(role);
+        console.log(newRole);
         await this.roleRepository.save(newRole);
       }
     }

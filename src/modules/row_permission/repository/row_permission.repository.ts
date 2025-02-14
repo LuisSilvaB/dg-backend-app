@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
-import { Rol_Pemission } from '../../../entities/Rol_Pemission';
+import { RolePermission } from '../../../entities/RolPemission.entity';
 
 @Injectable()
-export class RolPemissionRepository extends Repository<Rol_Pemission> {
+export class RolPemissionRepository extends Repository<RolePermission> {
   constructor(dataSource: DataSource) {
-    super(Rol_Pemission, dataSource.createEntityManager());
+    super(RolePermission, dataSource.createEntityManager());
   }
 }

@@ -5,8 +5,8 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { Role } from './Role';
-import { Employee } from './Employee';
+import { Role } from './Role.entity';
+import { Employee } from './Employee.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn({

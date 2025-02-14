@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee_DocumentRepository } from './repository/employee_document.repository';
-import { Employee_Document } from '../../entities/Employee_Document';
+import { Employee_Document } from '../../entities/Employee_Document.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Employee_Document])],

@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { SeederModule } from './seeds.module';
-import { AdminUserSeeder } from './UserSeeder';
-import { RolePermissionSeeder } from './PermissionRoleSeeder';
-import { PermissionSeeder } from './PermissionSeeder';
-import { RoleSeeder } from './RoleSeeder';
+import { AdminUserSeeder } from './User.seed';
+import { RolePermissionSeeder } from './PermissionRole.seed';
+import { PermissionSeeder } from './Permission.seed';
+import { RoleSeeder } from './Role.seed';
+import dataSource from '@/config/data-source';
 
 async function runSeeders() {
   const app = await NestFactory.createApplicationContext(SeederModule);
@@ -12,6 +13,7 @@ async function runSeeders() {
   const adminUserSeeder = app.get(AdminUserSeeder);
   const rolePermissionSeeder = app.get(RolePermissionSeeder);
 
+  await dataSource.initialize();
   await permissionSeeder.run();
   await roleSeeder.run();
   await rolePermissionSeeder.run();

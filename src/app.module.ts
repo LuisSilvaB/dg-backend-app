@@ -9,14 +9,13 @@ import { EmployeeDocumentModule } from './modules/employee_document/employee_doc
 import { RolePermissionModule } from './modules/row_permission/row_permission.module';
 import { DocumentTypeModule } from './modules/document_type/document_type.module';
 import { join } from 'path';
-import { User } from './entities/User';
-import { Role } from './entities/Role';
-import { Permission } from './entities/Permission';
-import { Employee } from './entities/Employee';
-import { Document_types } from './entities/Document_types';
-import { Rol_Pemission } from './entities/Rol_Pemission';
-import { Employee_Document } from './entities/Employee_Document';
-
+import { User } from './entities/User.entity';
+import { Role } from './entities/Role.entity';
+import { Permission } from './entities/Permission.entity';
+import { Employee } from './entities/Employee.entity';
+import { Document_types } from './entities/Document_types.entity';
+import { RolePermission } from './entities/RolPemission.entity';
+import { Employee_Document } from './entities/Employee_Document.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,10 +23,10 @@ import { Employee_Document } from './entities/Employee_Document';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get('DB_HOST'),
-        port: configService.get('DB_PORT'),
+        port: configService.get<number>('DB_PORT'),
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
@@ -37,26 +36,22 @@ import { Employee_Document } from './entities/Employee_Document';
           Permission,
           Employee,
           Document_types,
-          Rol_Pemission,
+          RolePermission,
           Employee_Document,
         ],
-        migrations: [join(__dirname, 'database', 'migrations', '*.{ts,js}')],
+        migrations: [join(__dirname, 'src', 'migrations', '*.{ts,js}')],
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: configService.get('NODE_ENV') !== 'production',
-        ssl:
-          configService.get('NODE_ENV') === 'production'
-            ? { rejectUnauthorized: false }
-            : false,
       }),
       inject: [ConfigService],
     }),
-    SeederModule,
     UserModule,
     RoleModule,
     EmployeeModule,
     EmployeeDocumentModule,
     RolePermissionModule,
     DocumentTypeModule,
+    SeederModule,
   ],
 })
 export class AppModule {}

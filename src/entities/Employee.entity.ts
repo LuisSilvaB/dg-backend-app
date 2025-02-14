@@ -5,8 +5,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from './User';
-import { Employee_Document } from './Employee_Document';
+import { User } from './User.entity';
+import { Employee_Document } from './Employee_Document.entity';
 
 @Entity()
 export class Employee {

@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
-import { Role } from './Role';
-import { Rol_Pemission } from './Rol_Pemission';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { RolePermission } from './RolPemission.entity';
 
 @Entity()
 export class Permission {
@@ -30,8 +29,9 @@ export class Permission {
     name: 'slug',
   })
   code: string;
-  @ManyToMany(() => Role, (role) => role.rolePermissions, {
-    onDelete: 'CASCADE',
-  })
-  rolePermissions: Rol_Pemission[];
+  @OneToMany(
+    () => RolePermission,
+    (rolePermission) => rolePermission.permission,
+  )
+  rolePermissions: RolePermission[];
 }

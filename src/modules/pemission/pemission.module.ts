@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PermissionRepository } from './repository/pemission.repository';
-import { Permission } from '../../entities/Permission';
+import { Permission } from '../../entities/Permission.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Permission])],

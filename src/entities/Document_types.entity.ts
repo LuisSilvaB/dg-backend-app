@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Employee_Document } from './Employee_Document';
+import { Employee_Document } from './Employee_Document.entity';
 
 @Entity()
 export class Document_types {

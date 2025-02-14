@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Permission } from '../entities/Permission';
+import { Permission } from '../entities/Permission.entity';
 
 @Injectable()
 export class PermissionSeeder {
@@ -11,6 +11,8 @@ export class PermissionSeeder {
   ) {}
 
   public async run(): Promise<void> {
+    console.log('Running permission seeder...');
+    console.log(this.permissionRepository);
     const permissions = [
       {
         name: 'CREATE_USER',
@@ -39,9 +41,11 @@ export class PermissionSeeder {
         code: permission.code,
       });
       if (!existingPermission) {
+        console.log(permission);
         const newPermission = this.permissionRepository.create(permission);
         await this.permissionRepository.save(newPermission);
       } else {
+        console.log(existingPermission);
         existingPermission.name = permission.name;
         existingPermission.description = permission.description;
         await this.permissionRepository.save(existingPermission);
