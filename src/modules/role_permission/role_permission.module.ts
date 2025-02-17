@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RolPemissionRepository } from './repository/row_permission.repository';
+import { RolPemissionRepository } from './repository/role_permission.repository';
 import { RolePermission } from '../../entities/RolPemission.entity';
 
 @Module({

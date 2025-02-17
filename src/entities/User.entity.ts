@@ -32,7 +32,7 @@ export class User {
 
   @Column({
     width: 60,
-    select: false,
+    select: true,
     type: 'varchar',
     name: 'password',
   })
@@ -40,6 +40,9 @@ export class User {
 
   @Column({ width: 60, type: 'varchar', name: 'email', unique: true })
   email: string;
+
+  @Column({ width: 60, type: 'varchar', name: 'default_route', nullable: true })
+  default_route: string;
 
   @ManyToOne(() => Role, (role) => role.users, { onDelete: 'CASCADE' })
   role: Role;

@@ -11,7 +11,7 @@ import { PermissionSeeder } from './Permission.seed';
 import { RoleSeeder } from './Role.seed';
 import { UserModule } from '../modules/user/user.module';
 import { RoleModule } from '../modules/role/role.module';
-import { RolePermissionModule } from '../modules/row_permission/row_permission.module';
+import { RolePermissionModule } from '../modules/role_permission/role_permission.module';
 import { Employee } from '../entities/Employee.entity';
 import { Employee_Document } from '../entities/Employee_Document.entity';
 import { Document_types } from '../entities/Document_types.entity';

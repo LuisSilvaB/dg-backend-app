@@ -30,6 +30,7 @@ export class AdminUserSeeder {
           first_name: 'Admin',
           last_name: 'User',
           email: 'admin@example.com',
+          default_route: '/empleados',
           password: hashedPassword,
           role: adminRole,
         });
